@@ -30,8 +30,9 @@ abstract class Preloader_UI_Rocket_Table extends WP_List_Table {
 		$items = [];
 
 		foreach ( $query as $item ) {
-			$items = [ maybe_unserialize( $item->$value_column ) ];
+			$items[] = maybe_unserialize( $item->$value_column );
 		}
+
 		$this->items = call_user_func_array( 'array_merge', $items );
 
 		$this->set_pagination_args( [
